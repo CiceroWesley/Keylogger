@@ -25,6 +25,7 @@ def main():
   resultsPasswords = []
 
   for line in data_log:
+    #regular expressions for user data
     removedDataAndTime = re.sub("\d{2}\/\d{2}\/\d{4}\s\d{2}:\d{2}:\d{2}\s-\s","",line)
     cpfs = re.findall("([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})", removedDataAndTime)
     cnpjs = re.findall("([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})", removedDataAndTime)
@@ -41,9 +42,11 @@ def main():
     resultsPasswords.append(passwords)
     # regex = re.sub("\\n","",regex)
 
+  # reference for regular expression
   # https://uibakery.io/regex-library/email-regex-python
   # https://pt.stackoverflow.com/questions/11045/express%C3%A3o-regular-para-validar-um-campo-que-aceita-cpf-ou-cnpj
-
+	
+  #priting user date
   filterListEmptyPrint(resultsCpfs, "CPFs")
   filterListEmptyPrint(resultsCnpjs, "CNPJs")
   filterListEmptyPrint(resultsEmails, "Emails")
